@@ -1,8 +1,9 @@
 package niffler.test;
 
 import niffler.jupiter.BeforeSuiteExtension;
+import niffler.jupiter.SpendingDataExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(BeforeSuiteExtension.class)
+@ExtendWith({BeforeSuiteExtension.class, SpendingDataExtension.class})
 public abstract class BaseTest {
 }
