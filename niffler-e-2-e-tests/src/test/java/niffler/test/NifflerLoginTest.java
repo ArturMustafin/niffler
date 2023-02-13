@@ -13,19 +13,22 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Selenide.$;
 import static niffler.jupiter.User.UserType.ADMIN;
+import static niffler.jupiter.User.UserType.COMMON;
 
 @ExtendWith({ScreenshotExtension.class, UsersExtension.class})
 public class NifflerLoginTest {
 
     @AllureId("1")
     @Test
-    void mainPageShouldBeDisplayedAfterSuccessLogin(@User(userType = ADMIN) UserModel user) {
-        System.out.println("#### Test 1 " + user.toString());
+    void mainPageShouldBeDisplayedAfterSuccessLogin(@User(userType = ADMIN) UserModel user1,
+                                                    @User(userType = COMMON) UserModel user2) {
+        System.out.println("#### Test 1 " + user1.toString());
+        System.out.println("#### Test 1 " + user2.toString());
         Allure.step("Check login", () -> {
             Selenide.open("http://127.0.0.1:3000/");
             $("a[href*='redirect']").click();
             $("input[name='username']").setValue("dima");
-            $("input[name='password']").setValue("12345");
+            $("input[name='password']").setValue("dima");
             $("button[type='submit']").click();
             $(".header__title").shouldBe(Condition.visible)
                     .shouldHave(Condition.text("Niffler. The coin keeper."));
@@ -40,7 +43,7 @@ public class NifflerLoginTest {
             Selenide.open("http://127.0.0.1:3000/");
             $("a[href*='redirect']").click();
             $("input[name='username']").setValue("dima");
-            $("input[name='password']").setValue("12345");
+            $("input[name='password']").setValue("dima");
             $("button[type='submit']").click();
             $(".header__title").shouldBe(Condition.visible)
                     .shouldHave(Condition.text("Niffler. The coin keeper."));
@@ -55,7 +58,7 @@ public class NifflerLoginTest {
             Selenide.open("http://127.0.0.1:3000/");
             $("a[href*='redirect']").click();
             $("input[name='username']").setValue("dima");
-            $("input[name='password']").setValue("12345");
+            $("input[name='password']").setValue("dima");
             $("button[type='submit']").click();
             $(".header__title").shouldBe(Condition.visible)
                     .shouldHave(Condition.text("Niffler. The coin keeper."));
@@ -70,7 +73,7 @@ public class NifflerLoginTest {
             Selenide.open("http://127.0.0.1:3000/");
             $("a[href*='redirect']").click();
             $("input[name='username']").setValue("dima");
-            $("input[name='password']").setValue("12345");
+            $("input[name='password']").setValue("dima");
             $("button[type='submit']").click();
             $(".header__title").shouldBe(Condition.visible)
                     .shouldHave(Condition.text("Niffler. The coin keeper."));
@@ -85,7 +88,7 @@ public class NifflerLoginTest {
             Selenide.open("http://127.0.0.1:3000/");
             $("a[href*='redirect']").click();
             $("input[name='username']").setValue("dima");
-            $("input[name='password']").setValue("12345");
+            $("input[name='password']").setValue("dima");
             $("button[type='submit']").click();
             $(".header__title").shouldBe(Condition.visible)
                     .shouldHave(Condition.text("Niffler. The coin keeper."));
