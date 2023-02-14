@@ -49,8 +49,8 @@ public class UsersExtension implements
                         : USER_MODEL_COMMON_QUEUE.poll();
             }
             map.put(user, type);
-            context.getStore(NAMESPACE).put(id, map);
         }
+        context.getStore(NAMESPACE).put(id, map);
     }
 
     @Override
