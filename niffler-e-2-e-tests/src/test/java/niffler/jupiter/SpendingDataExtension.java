@@ -1,19 +1,19 @@
 package niffler.jupiter;
 
-import niffler.testData.Spend;
-import org.junit.jupiter.api.extension.BeforeAllCallback;
+import niffler.model.SpendModel;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 
-public class SpendingDataExtension implements BeforeAllCallback {
+public class SpendingDataExtension implements BeforeEachCallback {
 
     @Override
-    public void beforeAll(ExtensionContext context) {
+    public void beforeEach(ExtensionContext context) throws Exception {
         given()
                 .contentType(JSON)
-                .body(Spend.getRandom())
+                .body(SpendModel.randomSpend())
                 .when().log().all()
                 .post("http://127.0.0.1:8093/addSpend")
                 .then()

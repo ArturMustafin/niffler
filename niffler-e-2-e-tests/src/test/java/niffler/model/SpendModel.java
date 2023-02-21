@@ -1,13 +1,10 @@
 package niffler.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import com.github.javafaker.Faker;
+import lombok.*;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Data
 @Builder
@@ -15,7 +12,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class SpendModel {
 
-    private UUID id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date spendDate;
     private String category;
@@ -23,5 +19,16 @@ public class SpendModel {
     private Double amount;
     private String description;
     private String username;
+
+    public static SpendModel randomSpend() {
+        Faker faker = new Faker();
+        return SpendModel.builder()
+                .spendDate(new Date())
+                .category(Category.randomCategory())
+                .currency(CurrencyValues.randomCurrencyValues())
+                .amount((double) faker.number().numberBetween(1, 500000))
+                .description(faker.hobbit().location())
+                .username("dima").build();
+    }
 
 }

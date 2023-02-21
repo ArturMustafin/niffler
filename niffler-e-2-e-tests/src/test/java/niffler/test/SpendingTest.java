@@ -1,11 +1,14 @@
 package niffler.test;
 
 import com.codeborne.selenide.Condition;
+import niffler.jupiter.SpendingDataExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Selenide.*;
 import static niffler.config.ConfigReader.PROPERTIES_CONFIG;
 
+@ExtendWith(SpendingDataExtension.class)
 public class SpendingTest extends BaseTest {
 
     @Test
